@@ -12,6 +12,7 @@ protocol LoginPresenterDelegate{
     
     init(view: LoginVCDelegate)
     func viewDidLoad()
+    func getUserData(email: String?, password: String?)
     
 }
 
@@ -22,6 +23,18 @@ class LoginPresenter: LoginPresenterDelegate{
     
     func viewDidLoad(){
         
+    }
+    
+    let userData = UserModel.userData
+    
+    func getUserData(email: String?, password: String?){
+        userData.forEach { data in
+            if data.username == email && data.password == password{
+                print("Welcome!")
+            }else{
+                print("Incorrect data!")
+            }
+        }
     }
     
     required init(view: LoginVCDelegate) {

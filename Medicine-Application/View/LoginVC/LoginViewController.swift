@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
     
     private lazy var loginField: UITextField = {
         let textF = TextField()
-        textF.placeholder = "email"
+        textF.placeholder = "username"
         textF.layer.borderWidth = 1
         textF.layer.cornerRadius = 14
         textF.layer.masksToBounds = true
@@ -66,6 +66,7 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 14
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(enterButtonTarget), for: .touchUpInside)
         return button
     }()
     
@@ -114,6 +115,10 @@ class LoginViewController: UIViewController {
             make.bottom.equalTo(-170)
             make.height.equalTo(50)
         }
+    }
+    
+    @objc func enterButtonTarget(){
+        presenter?.getUserData(email: loginField.text, password: passwordField.text)
     }
     
 }
