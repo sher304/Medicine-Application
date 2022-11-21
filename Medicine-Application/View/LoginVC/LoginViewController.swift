@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Hero
 import SnapKit
 
 protocol LoginVCDelegate: AnyObject{
-    
+    func openHomeVC(validated: Bool?)
 }
 
 class LoginViewController: UIViewController {
@@ -125,4 +126,14 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginVCDelegate{
     
+    func openHomeVC(validated: Bool?){
+        if validated == true{
+            let vc = HomeBuilder.build()
+            vc.hero.isEnabled = true
+            vc.hero.modalAnimationType = .cover(direction: .down)
+            self.present(vc, animated: true)
+        }else{
+            greetingText.text = "Incorrect Data!"
+        }
+    }
 }

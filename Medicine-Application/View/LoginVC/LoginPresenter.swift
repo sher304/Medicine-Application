@@ -30,9 +30,9 @@ class LoginPresenter: LoginPresenterDelegate{
     func getUserData(email: String?, password: String?){
         userData.forEach { data in
             if data.username == email && data.password == password{
-                print("Welcome!")
+                view?.openHomeVC(validated: true)
             }else{
-                print("Incorrect data!")
+                view?.openHomeVC(validated: false)
             }
         }
     }
