@@ -21,7 +21,7 @@ class LoginPresenter: LoginPresenterDelegate{
     weak var view: LoginVCDelegate?
     
     func viewDidLoad(){
-        view?.check(message: "Greeting From Poland!")
+        
     }
     
     required init(view: LoginVCDelegate) {
