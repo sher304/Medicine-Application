@@ -14,7 +14,6 @@ class RegisterBuilder {
         let vc = RegisterViewController()
         let presenter = RegisterPresenter(view: vc)
         vc.presenter = presenter
-        return vc
-        
+        return vc   
     }
 }
