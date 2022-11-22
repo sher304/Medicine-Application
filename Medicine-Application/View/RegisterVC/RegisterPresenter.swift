@@ -32,19 +32,24 @@ class RegisterPresenter: RegisterPresenterDelegate{
         let name = userModel?.name
         let surname = userModel?.surname
         let userSet = UserModel(username: username, password: password, PESEL: Int.random(in: 1000...15000).description, name: name, surname: surname, isNurse: false, isDoc: false)
-        // To store in UserDefaults
-        let encoder = JSONEncoder()
-        if let encoded = try? encoder.encode(userSet) {
-            defaults.set(encoded, forKey: "userData")
-        }
         
         // Retrieve from UserDefaults
         if let savedPerson = defaults.object(forKey: "userData") as? Data {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson) {
                 print(loadedPerson)
+                if loadedPerson.username != username{
+                    // To store in UserDefaults
+                    let encoder = JSONEncoder()
+                    if let encoded = try? encoder.encode(userSet) {
+                        defaults.set(encoded, forKey: "userData")
+                    }
+                }else{
+                    print("User in Database!")
+                }
             }
         }
+        
     }
     
     required init(view: RegisterVCDelegate?) {
