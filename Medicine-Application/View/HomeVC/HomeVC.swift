@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol HomeVCDelegate: AnyObject{
+    
+}
+
 class HomeViewController: UIViewController {
 
+    var presenter: HomePresenterDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
@@ -18,4 +24,10 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .green
 
     }
+}
+
+
+extension HomeViewController: HomeVCDelegate{
+    
+    
 }

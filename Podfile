@@ -7,4 +7,5 @@ target 'Medicine-Application' do
 
   # Pods for Medicine-Application
 	pod 'SnapKit'
+	pod 'Hero'
 end

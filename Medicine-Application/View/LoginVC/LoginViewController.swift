@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import Hero
 import SnapKit
 
 protocol LoginVCDelegate: AnyObject{
-    
+    func openHomeVC(validated: Bool?)
 }
 
 class LoginViewController: UIViewController {
@@ -34,7 +35,7 @@ class LoginViewController: UIViewController {
     
     private lazy var loginField: UITextField = {
         let textF = TextField()
-        textF.placeholder = "email"
+        textF.placeholder = "username"
         textF.layer.borderWidth = 1
         textF.layer.cornerRadius = 14
         textF.layer.masksToBounds = true
@@ -66,6 +67,7 @@ class LoginViewController: UIViewController {
         button.layer.cornerRadius = 14
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(enterButtonTarget), for: .touchUpInside)
         return button
     }()
     
@@ -116,8 +118,22 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @objc func enterButtonTarget(){
+        presenter?.getUserData(email: loginField.text, password: passwordField.text)
+    }
+    
 }
 
 extension LoginViewController: LoginVCDelegate{
     
+    func openHomeVC(validated: Bool?){
+        if validated == true{
+            let vc = HomeBuilder.build()
+            vc.hero.isEnabled = true
+            vc.hero.modalAnimationType = .cover(direction: .down)
+            self.present(vc, animated: true)
+        }else{
+            greetingText.text = "Incorrect Data!"
+        }
+    }
 }

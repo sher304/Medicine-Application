@@ -6,3 +6,20 @@
 //
 
 import Foundation
+
+protocol HomePresenterDelegate{
+    
+    init(view: HomeVCDelegate)
+}
+
+class HomePresenter: HomePresenterDelegate{
+    
+
+    weak var view: HomeVCDelegate?
+    
+    
+    required init(view: HomeVCDelegate) {
+        self.view = view
+    }
+    
+}
