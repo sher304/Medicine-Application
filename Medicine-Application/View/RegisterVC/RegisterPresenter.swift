@@ -44,8 +44,10 @@ class RegisterPresenter: RegisterPresenterDelegate{
                     if let encoded = try? encoder.encode(userSet) {
                         defaults.set(encoded, forKey: "userData")
                     }
+                    view?.check(isCreated: true)
                 }else{
                     print("User in Database!")
+                    view?.check(isCreated: false)
                 }
             }
         }
