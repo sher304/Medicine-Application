@@ -154,7 +154,7 @@ class RegisterViewController: UIViewController {
         enterButton.snp.makeConstraints { make in
             make.leading.equalTo(40)
             make.trailing.equalTo(-40)
-            make.bottom.equalTo(-170)
+            make.bottom.equalTo(-120)
             make.height.equalTo(50)
         }
     }
@@ -167,7 +167,11 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func enterButtonTarget(){
-        presenter?.getData(userModel: UserModel(username: loginField.text, password: passwordField.text, PESEL: Int.random(in: 1000...1600).description, name: nameField.text, surname: surnameField.text, isNurse: false, isDoc: false))
+        if ((loginField.text?.isEmpty) != nil) || ((passwordField.text?.isEmpty) != nil) || ((surnameField.text?.isEmpty) != nil) || ((nameField.text?.isEmpty) != nil){
+           print("Empty")
+        }else{
+            presenter?.getData(userModel: UserModel(username: loginField.text, password: passwordField.text, PESEL: Int.random(in: 1000...1600).description, name: nameField.text, surname: surnameField.text, isNurse: false, isDoc: false))
+        }
     }
 }
 

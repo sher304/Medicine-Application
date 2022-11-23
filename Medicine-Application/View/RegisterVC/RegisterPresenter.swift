@@ -45,12 +45,7 @@ class RegisterPresenter: RegisterPresenterDelegate{
                         defaults.set(encoded, forKey: "userData")
                     }
                     view?.check(isCreated: true)
-                    print("saved!")
-                    print("-")
-                    print(loadedPerson)
-                    print("-")
                 }else{
-                    print("User in Database!")
                     view?.check(isCreated: false)
                 }
             }
