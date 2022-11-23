@@ -32,11 +32,13 @@ class LoginPresenter: LoginPresenterDelegate{
         if let savedPerson = userDefaults.object(forKey: "userData") as? Data {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson) {
+                print(loadedPerson.username)
+                print(loadedPerson.password)
                 if loadedPerson.username == email && loadedPerson.password == password{
                     view?.openHomeVC(validated: true)
+                }else{
+                    view?.openHomeVC(validated: false)
                 }
-            }else{
-                view?.openHomeVC(validated: false)
             }
         }
     }
