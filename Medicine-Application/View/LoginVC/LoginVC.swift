@@ -17,6 +17,16 @@ class LoginViewController: UIViewController {
     
     var presenter: LoginPresenterDelegate?
     
+    private lazy var backButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "arrowshape.turn.up.backward.fill"), for: .normal)
+        button.tintColor = .white
+        button.contentVerticalAlignment = .center
+        button.contentHorizontalAlignment = .center
+        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     private lazy var greetingText: UILabel = {
         let label = UILabel()
         label.text = "Hello,"
@@ -80,6 +90,13 @@ class LoginViewController: UIViewController {
     private func setupConstraints(){
         view.backgroundColor = Color.customDarkBlue
         
+        view.addSubview(backButton)
+        backButton.snp.makeConstraints { make in
+            make.leading.equalTo(30)
+            make.top.equalTo(70)
+            make.height.width.equalTo(30)
+        }
+        
         view.addSubview(greetingText)
         greetingText.snp.makeConstraints { make in
             make.leading.equalTo(20)
@@ -120,6 +137,10 @@ class LoginViewController: UIViewController {
     
     @objc func enterButtonTarget(){
         presenter?.getUserData(email: loginField.text, password: passwordField.text)
+    }
+    
+    @objc func backButtonTapped(){
+        self.dismiss(animated: true)
     }
     
 }

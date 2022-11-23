@@ -46,6 +46,7 @@ class RegisterPresenter: RegisterPresenterDelegate{
                     }
                     view?.check(isCreated: true)
                 }else{
+                    print("USer IS BUSY!")
                     view?.check(isCreated: false)
                 }
             }

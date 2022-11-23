@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 protocol RegisterVCDelegate: AnyObject {
     
@@ -16,6 +17,16 @@ protocol RegisterVCDelegate: AnyObject {
 class RegisterViewController: UIViewController {
     
     var presenter: RegisterPresenterDelegate?
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.setImage(UIImage(systemName: "arrowshape.turn.up.backward.fill"), for: .normal)
+        button.tintColor = .white
+        button.contentVerticalAlignment = .center
+        button.contentHorizontalAlignment = .center
+        button.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+        return button
+    }()
     
     private lazy var greetingText: UILabel = {
         let label = UILabel()
@@ -103,6 +114,13 @@ class RegisterViewController: UIViewController {
     private func setupConstraints(){
         view.backgroundColor = Color.customDarkBlue
         
+        view.addSubview(backButton)
+        backButton.snp.makeConstraints { make in
+            make.leading.equalTo(30)
+            make.top.equalTo(70)
+            make.height.width.equalTo(30)
+        }
+        
         view.addSubview(greetingText)
         greetingText.snp.makeConstraints { make in
             make.leading.equalTo(20)
@@ -167,11 +185,15 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func enterButtonTarget(){
-        if ((loginField.text?.isEmpty) != nil) || ((passwordField.text?.isEmpty) != nil) || ((surnameField.text?.isEmpty) != nil) || ((nameField.text?.isEmpty) != nil){
-           print("Empty")
+        if loginField.text == "" || passwordField.text == "" || nameField.text == "" || surnameField.text == ""{
+            print("Emptyy!")
         }else{
             presenter?.getData(userModel: UserModel(username: loginField.text, password: passwordField.text, PESEL: Int.random(in: 1000...1600).description, name: nameField.text, surname: surnameField.text, isNurse: false, isDoc: false))
         }
+    }
+    
+    @objc func backButtonTapped(){
+        self.dismiss(animated: true)
     }
 }
 
