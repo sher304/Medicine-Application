@@ -9,6 +9,8 @@ import UIKit
 
 protocol RegisterVCDelegate: AnyObject {
     
+    func check(isCreated: Bool)
+    
 }
 
 class RegisterViewController: UIViewController {
@@ -172,5 +174,15 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController: RegisterVCDelegate{
 
+    func check(isCreated: Bool){
+        if isCreated{
+            let vc = HomeBuilder.build()
+            vc.hero.isEnabled = true
+            vc.hero.modalAnimationType = .pageIn(direction: .down)
+            self.present(vc, animated: true)
+        }else{
+            greetingText.text = "Username is busy"
+        }
+    }
     
 }
