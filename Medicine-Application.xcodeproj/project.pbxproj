@@ -10,6 +10,9 @@
 		601654B8292C041F000CFE02 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601654B7292C041F000CFE02 /* RegisterVC.swift */; };
 		601654BA292C043A000CFE02 /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601654B9292C043A000CFE02 /* RegisterPresenter.swift */; };
 		601654BC292C0441000CFE02 /* RegisterBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601654BB292C0441000CFE02 /* RegisterBuilder.swift */; };
+		601654BF292E1564000CFE02 /* OnBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601654BE292E1564000CFE02 /* OnBoardPresenter.swift */; };
+		601654C1292E1584000CFE02 /* OnBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601654C0292E1584000CFE02 /* OnBoardVC.swift */; };
+		601654C3292E15D2000CFE02 /* OnBoardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601654C2292E15D2000CFE02 /* OnBoardBuilder.swift */; };
 		606733A4292BD767004CECE7 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606733A3292BD767004CECE7 /* HomePresenter.swift */; };
 		606733A6292BD776004CECE7 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606733A5292BD776004CECE7 /* HomeBuilder.swift */; };
 		606733A9292BD795004CECE7 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606733A8292BD795004CECE7 /* LoginPresenter.swift */; };
@@ -30,6 +33,9 @@
 		601654B7292C041F000CFE02 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
 		601654B9292C043A000CFE02 /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		601654BB292C0441000CFE02 /* RegisterBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterBuilder.swift; sourceTree = "<group>"; };
+		601654BE292E1564000CFE02 /* OnBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardPresenter.swift; sourceTree = "<group>"; };
+		601654C0292E1584000CFE02 /* OnBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardVC.swift; sourceTree = "<group>"; };
+		601654C2292E15D2000CFE02 /* OnBoardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardBuilder.swift; sourceTree = "<group>"; };
 		606733A3292BD767004CECE7 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		606733A5292BD776004CECE7 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		606733A8292BD795004CECE7 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -80,6 +86,16 @@
 			path = RegisterVC;
 			sourceTree = "<group>";
 		};
+		601654BD292E1557000CFE02 /* OnBoardVC */ = {
+			isa = PBXGroup;
+			children = (
+				601654BE292E1564000CFE02 /* OnBoardPresenter.swift */,
+				601654C0292E1584000CFE02 /* OnBoardVC.swift */,
+				601654C2292E15D2000CFE02 /* OnBoardBuilder.swift */,
+			);
+			path = OnBoardVC;
+			sourceTree = "<group>";
+		};
 		6067339F292BD746004CECE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +107,7 @@
 		606733A0292BD74B004CECE7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				601654BD292E1557000CFE02 /* OnBoardVC */,
 				601654B6292C0410000CFE02 /* RegisterVC */,
 				606733A7292BD789004CECE7 /* LoginVC */,
 				606733A2292BD756004CECE7 /* HomeVC */,
@@ -286,13 +303,16 @@
 			files = (
 				606733AB292BD7A4004CECE7 /* LoginViewController.swift in Sources */,
 				601654B8292C041F000CFE02 /* RegisterVC.swift in Sources */,
+				601654BF292E1564000CFE02 /* OnBoardPresenter.swift in Sources */,
 				606733A9292BD795004CECE7 /* LoginPresenter.swift in Sources */,
 				601654BC292C0441000CFE02 /* RegisterBuilder.swift in Sources */,
 				608F8D84292BD69D00297FBD /* HomeVC.swift in Sources */,
+				601654C1292E1584000CFE02 /* OnBoardVC.swift in Sources */,
 				608F8D80292BD69D00297FBD /* AppDelegate.swift in Sources */,
 				606733A6292BD776004CECE7 /* HomeBuilder.swift in Sources */,
 				606733AD292BD7C7004CECE7 /* LoginBuilder.swift in Sources */,
 				601654BA292C043A000CFE02 /* RegisterPresenter.swift in Sources */,
+				601654C3292E15D2000CFE02 /* OnBoardBuilder.swift in Sources */,
 				608F8D82292BD69D00297FBD /* SceneDelegate.swift in Sources */,
 				606733A4292BD767004CECE7 /* HomePresenter.swift in Sources */,
 				606733B2292BFE73004CECE7 /* UserModel.swift in Sources */,
