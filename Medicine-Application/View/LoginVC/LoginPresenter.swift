@@ -26,11 +26,15 @@ class LoginPresenter: LoginPresenterDelegate{
     }
     
     let userData = UserModel.userData
+    let userDefaults = UserDefaults.standard
     
     func getUserData(email: String?, password: String?){
-        userData.forEach { data in
-            if data.username == email && data.password == password{
-                view?.openHomeVC(validated: true)
+        if let savedPerson = userDefaults.object(forKey: "userData") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson) {
+                if loadedPerson.username == email && loadedPerson.password == password{
+                    view?.openHomeVC(validated: true)
+                }
             }else{
                 view?.openHomeVC(validated: false)
             }
