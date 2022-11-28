@@ -20,6 +20,7 @@ protocol LoginPresenterDelegate{
 class LoginPresenter: LoginPresenterDelegate{
     
     weak var view: LoginVCDelegate?
+    var homePresenter: HomePresenterDelegate?
     
     func viewDidLoad(){
         
@@ -32,9 +33,17 @@ class LoginPresenter: LoginPresenterDelegate{
         if let savedPerson = userDefaults.object(forKey: "userData") as? Data {
             let decoder = JSONDecoder()
             if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson) {
-                print(loadedPerson.username)
-                print(loadedPerson.password)
                 if loadedPerson.username == email && loadedPerson.password == password{
+                    DispatchQueue.main.async {
+                        guard let username = loadedPerson.username else { return }
+                        guard let isDoctor = loadedPerson.isDoc else { return }
+                        guard let isNurse = loadedPerson.isNurse else { return }
+                        self.homePresenter?.getUsername(username: username, isNurse: isNurse, isDoctor: isDoctor)
+                        print(username)
+                        print(isNurse)
+                        print(isDoctor)
+                        print("++-----+++")
+                    }
                     view?.openHomeVC(validated: true)
                 }else{
                     view?.openHomeVC(validated: false)

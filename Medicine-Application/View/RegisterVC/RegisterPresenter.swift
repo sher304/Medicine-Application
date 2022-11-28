@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import FirebaseAuth
+import FirebaseFirestore
 
 protocol RegisterPresenterDelegate {
     
@@ -14,6 +16,8 @@ protocol RegisterPresenterDelegate {
     func viewDidLoad()
     
     func getData(userModel: UserModel?)
+    
+    func registerUser(userModel: UserModel?)
 }
 
 class RegisterPresenter: RegisterPresenterDelegate{
@@ -27,31 +31,68 @@ class RegisterPresenter: RegisterPresenterDelegate{
     }
     
     func getData(userModel: UserModel?){
-        let password = userModel?.password
-        let username = userModel?.username
-        let name = userModel?.name
-        let surname = userModel?.surname
-        let userSet = UserModel(username: username, password: password, PESEL: Int.random(in: 1000...15000).description, name: name, surname: surname, isNurse: false, isDoc: false)
+        registerUser(userModel: userModel)
+        //        // Retrieve from UserDefaults
+        //        if let savedPerson = defaults.object(forKey: "userData") as? Data {
+        //            let decoder = JSONDecoder()
+        //            if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson) {
+        //                print(loadedPerson)
+        //                if loadedPerson.username != username{
+        //                    // To store in UserDefaults
+        //                    let encoder = JSONEncoder()
+        //                    if let encoded = try? encoder.encode(userSet) {
+        //                        defaults.set(encoded, forKey: "userData")
+        //                    }
+        //                    view?.check(isCreated: true)
+        //                }else{
+        //                    print("USer IS BUSY!")
+        //                    view?.check(isCreated: false)
+        //                }
+        //            }
+        //        }
+    }
+    
+    func registerUser(userModel: UserModel?) {
         
-        // Retrieve from UserDefaults
-        if let savedPerson = defaults.object(forKey: "userData") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson) {
-                print(loadedPerson)
-                if loadedPerson.username != username{
-                    // To store in UserDefaults
-                    let encoder = JSONEncoder()
-                    if let encoded = try? encoder.encode(userSet) {
-                        defaults.set(encoded, forKey: "userData")
-                    }
-                    view?.check(isCreated: true)
+        let db = Firestore.firestore()
+        
+        
+        
+        guard let email = userModel?.username, !email.isEmpty,
+              let password = userModel?.password, !password.isEmpty,
+              let name = userModel?.name, !name.isEmpty,
+              let surname = userModel?.surname, !surname.isEmpty,
+              let PESEL = userModel?.PESEL, !PESEL.isEmpty,
+              let isNurse = userModel?.isNurse, !isNurse,
+              let isDoc = userModel?.isDoc, !isDoc else {
+            print("Missing Required Data!")
+            return
+        }
+        
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            guard error == nil else {
+                print("Failed while Creating Account.")
+                print(error?.localizedDescription)
+                self.view?.check(isCreated: false)
+                return
+            }
+            
+            var ref: DocumentReference? = nil
+            
+            ref = db.collection("users").addDocument(data: ["name" : name,
+                                                            "surname": surname,
+                                                            "PESEL": PESEL,
+                                                            "isNurse": isNurse,
+                                                            "isDoc": isDoc,
+                                                            "uid": result!.user.uid]) { (error) in
+                if error != nil{
+                    print(error?.localizedDescription)
+                    self.view?.check(isCreated: false)
                 }else{
-                    print("USer IS BUSY!")
-                    view?.check(isCreated: false)
+                    self.view?.check(isCreated: true)
                 }
             }
         }
-        
     }
     
     required init(view: RegisterVCDelegate?) {
