@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 protocol HomePresenterDelegate{
     
@@ -22,16 +23,15 @@ class HomePresenter: HomePresenterDelegate{
     
     
     func viewDidLoad(){
-        print("VIEw DID LOAD")
+        let userID : String = (Auth.auth().currentUser?.email)!
+        print("Current user ID is" + userID)
+        view?.getUsername(username: userID)
     }
     
     func getUsername(username: String, isNurse: Bool, isDoctor: Bool){
-        print("1HOME PRESENTER")
-        print(username)
-        print(isNurse)
-        print(isDoctor)
-        print("2HOME PRESENTER")
-        view?.getUsername(username: username)
+        let userID : String = (Auth.auth().currentUser?.email)!
+        print("Current user ID is" + userID)
+        view?.getUsername(username: userID)
     }
     
     

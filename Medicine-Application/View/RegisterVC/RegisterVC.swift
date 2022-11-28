@@ -192,7 +192,7 @@ class RegisterViewController: UIViewController {
                   print("Missing Required Data!")
                   return
               }
-        presenter?.registerUser(userModel: UserModel(username: email, password: password, PESEL: Int.random(in: 100000...999999).description, name: name, surname: surname, isNurse: false, isDoc: false))
+        presenter?.getData(userModel: UserModel(username: email, password: password, PESEL: Int.random(in: 100000...999999).description, name: name, surname: surname, isNurse: false, isDoc: false))
     }
     
     @objc func backButtonTapped(){

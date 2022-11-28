@@ -11,7 +11,6 @@ import FirebaseAuth
 protocol LoginPresenterDelegate{
     
     init(view: LoginVCDelegate)
-    func viewDidLoad()
     func getUserData(email: String?, password: String?)
     
 }
@@ -21,10 +20,6 @@ class LoginPresenter: LoginPresenterDelegate{
     
     weak var view: LoginVCDelegate?
     var homePresenter: HomePresenterDelegate?
-    
-    func viewDidLoad(){
-        
-    }
     
     let userData = UserModel.userData
     let userDefaults = UserDefaults.standard

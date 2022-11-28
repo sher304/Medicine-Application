@@ -12,12 +12,10 @@ import FirebaseFirestore
 protocol RegisterPresenterDelegate {
     
     init(view: RegisterVCDelegate?)
-    
-    func viewDidLoad()
+
     
     func getData(userModel: UserModel?)
     
-    func registerUser(userModel: UserModel?)
 }
 
 class RegisterPresenter: RegisterPresenterDelegate{
@@ -26,15 +24,11 @@ class RegisterPresenter: RegisterPresenterDelegate{
     
     let defaults = UserDefaults.standard
     
-    func viewDidLoad(){
-        
-    }
-    
     func getData(userModel: UserModel?){
         registerUser(userModel: userModel)
     }
     
-    func registerUser(userModel: UserModel?) {
+    private func registerUser(userModel: UserModel?) {
         let db = Firestore.firestore()
         
         guard let email = userModel?.username, !email.isEmpty,
