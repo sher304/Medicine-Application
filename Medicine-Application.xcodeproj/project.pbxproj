@@ -26,6 +26,7 @@
 		608F8D87292BD69D00297FBD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 608F8D85292BD69D00297FBD /* Main.storyboard */; };
 		608F8D89292BD69F00297FBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 608F8D88292BD69F00297FBD /* Assets.xcassets */; };
 		608F8D8C292BD69F00297FBD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 608F8D8A292BD69F00297FBD /* LaunchScreen.storyboard */; };
+		60C138E42933E5FF00CA9576 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 60C138E32933E5FF00CA9576 /* GoogleService-Info.plist */; };
 		717F9F85EF4E01FCEDEEEB90 /* Pods_Medicine_Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B4F639E6CD9401F16A1CB0 /* Pods_Medicine_Application.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		608F8D88292BD69F00297FBD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		608F8D8B292BD69F00297FBD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		608F8D8D292BD69F00297FBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		60C138E32933E5FF00CA9576 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7A46BC024DAC63BF857DE04A /* Pods-Medicine-Application.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicine-Application.debug.xcconfig"; path = "Target Support Files/Pods-Medicine-Application/Pods-Medicine-Application.debug.xcconfig"; sourceTree = "<group>"; };
 		CD7D7EE989C465B23D7E6A27 /* Pods-Medicine-Application.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Medicine-Application.release.xcconfig"; path = "Target Support Files/Pods-Medicine-Application/Pods-Medicine-Application.release.xcconfig"; sourceTree = "<group>"; };
 		D1B4F639E6CD9401F16A1CB0 /* Pods_Medicine_Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Medicine_Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,17 +166,26 @@
 		608F8D7E292BD69D00297FBD /* Medicine-Application */ = {
 			isa = PBXGroup;
 			children = (
+				60C138E02933A94900CA9576 /* Base */,
 				606733AE292BDFB9004CECE7 /* Extension */,
 				606733A0292BD74B004CECE7 /* View */,
 				6067339F292BD746004CECE7 /* Model */,
 				608F8D7F292BD69D00297FBD /* AppDelegate.swift */,
 				608F8D81292BD69D00297FBD /* SceneDelegate.swift */,
-				608F8D85292BD69D00297FBD /* Main.storyboard */,
 				608F8D88292BD69F00297FBD /* Assets.xcassets */,
-				608F8D8A292BD69F00297FBD /* LaunchScreen.storyboard */,
 				608F8D8D292BD69F00297FBD /* Info.plist */,
+				60C138E32933E5FF00CA9576 /* GoogleService-Info.plist */,
 			);
 			path = "Medicine-Application";
+			sourceTree = "<group>";
+		};
+		60C138E02933A94900CA9576 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				608F8D85292BD69D00297FBD /* Main.storyboard */,
+				608F8D8A292BD69F00297FBD /* LaunchScreen.storyboard */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 		D8BB74A49F0B8137454C2A34 /* Pods */ = {
@@ -247,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				608F8D8C292BD69F00297FBD /* LaunchScreen.storyboard in Resources */,
+				60C138E42933E5FF00CA9576 /* GoogleService-Info.plist in Resources */,
 				608F8D89292BD69F00297FBD /* Assets.xcassets in Resources */,
 				608F8D87292BD69D00297FBD /* Main.storyboard in Resources */,
 			);

@@ -8,4 +8,7 @@ target 'Medicine-Application' do
   # Pods for Medicine-Application
 	pod 'SnapKit'
 	pod 'Hero'
+	pod 'Firebase/Core'
+	pod 'Firebase/Auth'
+	pod 'Firebase/Firestore'
 end
