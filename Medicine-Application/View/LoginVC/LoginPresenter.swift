@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import FirebaseAuth
 
 protocol LoginPresenterDelegate{
     
@@ -30,24 +30,25 @@ class LoginPresenter: LoginPresenterDelegate{
     let userDefaults = UserDefaults.standard
     
     func getUserData(email: String?, password: String?){
-        if let savedPerson = userDefaults.object(forKey: "userData") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson) {
-                if loadedPerson.username == email && loadedPerson.password == password{
-                    DispatchQueue.main.async {
-                        guard let username = loadedPerson.username else { return }
-                        guard let isDoctor = loadedPerson.isDoc else { return }
-                        guard let isNurse = loadedPerson.isNurse else { return }
-                        self.homePresenter?.getUsername(username: username, isNurse: isNurse, isDoctor: isDoctor)
-                        print(username)
-                        print(isNurse)
-                        print(isDoctor)
-                        print("++-----+++")
-                    }
-                    view?.openHomeVC(validated: true)
-                }else{
-                    view?.openHomeVC(validated: false)
-                }
+        signIn(email: email, password: password)
+    }
+    
+    private func signIn(email: String?, password: String?){
+        guard let email = email else {
+            print("#1 LOgin Failed")
+            self.view?.openHomeVC(validated: false)
+            return }
+        guard let password = password else {
+            print("#2 LOgin Failed")
+            self.view?.openHomeVC(validated: false)
+            return }
+        
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if error != nil{
+                self.view?.openHomeVC(validated: false)
+                print("#3 lo")
+            }else {
+                self.view?.openHomeVC(validated: true)
             }
         }
     }
