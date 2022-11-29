@@ -185,13 +185,6 @@ class RegisterViewController: UIViewController {
     }
     
     @objc func enterButtonTarget(){
-//        if loginField.text == "" || passwordField.text == "" || nameField.text == "" || surnameField.text == ""{
-//            print("Emptyy!")
-//
-//        }else{
-//            presenter?.getData(userModel: UserModel(username: loginField.text, password: passwordField.text, PESEL: Int.random(in: 1000...1600).description, name: nameField.text, surname: surnameField.text, isNurse: false, isDoc: false))
-//        }
-        
         guard let email = loginField.text, !email.isEmpty,
               let password = passwordField.text, !password.isEmpty,
               let name = nameField.text, !name.isEmpty,
@@ -199,8 +192,7 @@ class RegisterViewController: UIViewController {
                   print("Missing Required Data!")
                   return
               }
-        
-        presenter?.registerUser(userModel: UserModel(username: email, password: password, PESEL: Int.random(in: 100000...999999).description, name: name, surname: surname, isNurse: false, isDoc: false))
+        presenter?.getData(userModel: UserModel(username: email, password: password, PESEL: Int.random(in: 100000...999999).description, name: name, surname: surname, isNurse: false, isDoc: false))
     }
     
     @objc func backButtonTapped(){

@@ -12,12 +12,10 @@ import FirebaseFirestore
 protocol RegisterPresenterDelegate {
     
     init(view: RegisterVCDelegate?)
-    
-    func viewDidLoad()
+
     
     func getData(userModel: UserModel?)
     
-    func registerUser(userModel: UserModel?)
 }
 
 class RegisterPresenter: RegisterPresenterDelegate{
@@ -26,37 +24,12 @@ class RegisterPresenter: RegisterPresenterDelegate{
     
     let defaults = UserDefaults.standard
     
-    func viewDidLoad(){
-        
-    }
-    
     func getData(userModel: UserModel?){
         registerUser(userModel: userModel)
-        //        // Retrieve from UserDefaults
-        //        if let savedPerson = defaults.object(forKey: "userData") as? Data {
-        //            let decoder = JSONDecoder()
-        //            if let loadedPerson = try? decoder.decode(UserModel.self, from: savedPerson) {
-        //                print(loadedPerson)
-        //                if loadedPerson.username != username{
-        //                    // To store in UserDefaults
-        //                    let encoder = JSONEncoder()
-        //                    if let encoded = try? encoder.encode(userSet) {
-        //                        defaults.set(encoded, forKey: "userData")
-        //                    }
-        //                    view?.check(isCreated: true)
-        //                }else{
-        //                    print("USer IS BUSY!")
-        //                    view?.check(isCreated: false)
-        //                }
-        //            }
-        //        }
     }
     
-    func registerUser(userModel: UserModel?) {
-        
+    private func registerUser(userModel: UserModel?) {
         let db = Firestore.firestore()
-        
-        
         
         guard let email = userModel?.username, !email.isEmpty,
               let password = userModel?.password, !password.isEmpty,

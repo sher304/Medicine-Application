@@ -13,6 +13,7 @@
 		601654BF292E1564000CFE02 /* OnBoardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601654BE292E1564000CFE02 /* OnBoardPresenter.swift */; };
 		601654C1292E1584000CFE02 /* OnBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601654C0292E1584000CFE02 /* OnBoardVC.swift */; };
 		601654C3292E15D2000CFE02 /* OnBoardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 601654C2292E15D2000CFE02 /* OnBoardBuilder.swift */; };
+		6056557629366B410048D777 /* DoctorCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6056557529366B410048D777 /* DoctorCollectionCell.swift */; };
 		606733A4292BD767004CECE7 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606733A3292BD767004CECE7 /* HomePresenter.swift */; };
 		606733A6292BD776004CECE7 /* HomeBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606733A5292BD776004CECE7 /* HomeBuilder.swift */; };
 		606733A9292BD795004CECE7 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606733A8292BD795004CECE7 /* LoginPresenter.swift */; };
@@ -37,6 +38,7 @@
 		601654BE292E1564000CFE02 /* OnBoardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardPresenter.swift; sourceTree = "<group>"; };
 		601654C0292E1584000CFE02 /* OnBoardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardVC.swift; sourceTree = "<group>"; };
 		601654C2292E15D2000CFE02 /* OnBoardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardBuilder.swift; sourceTree = "<group>"; };
+		6056557529366B410048D777 /* DoctorCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorCollectionCell.swift; sourceTree = "<group>"; };
 		606733A3292BD767004CECE7 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		606733A5292BD776004CECE7 /* HomeBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBuilder.swift; sourceTree = "<group>"; };
 		606733A8292BD795004CECE7 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 			path = OnBoardVC;
 			sourceTree = "<group>";
 		};
+		6056557429366B300048D777 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				6056557529366B410048D777 /* DoctorCollectionCell.swift */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
 		6067339F292BD746004CECE7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +130,7 @@
 		606733A2292BD756004CECE7 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				6056557429366B300048D777 /* CustomCell */,
 				608F8D83292BD69D00297FBD /* HomeVC.swift */,
 				606733A3292BD767004CECE7 /* HomePresenter.swift */,
 				606733A5292BD776004CECE7 /* HomeBuilder.swift */,
@@ -324,6 +335,7 @@
 				606733A6292BD776004CECE7 /* HomeBuilder.swift in Sources */,
 				606733AD292BD7C7004CECE7 /* LoginBuilder.swift in Sources */,
 				601654BA292C043A000CFE02 /* RegisterPresenter.swift in Sources */,
+				6056557629366B410048D777 /* DoctorCollectionCell.swift in Sources */,
 				601654C3292E15D2000CFE02 /* OnBoardBuilder.swift in Sources */,
 				608F8D82292BD69D00297FBD /* SceneDelegate.swift in Sources */,
 				606733A4292BD767004CECE7 /* HomePresenter.swift in Sources */,

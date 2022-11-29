@@ -19,9 +19,21 @@ class HomeViewController: UIViewController {
     private lazy var usernameTitle: UILabel = {
         let label = UILabel()
         label.text = "USERNAME!"
-        label.font = .systemFont(ofSize: 24, weight: .regular)
-        
+        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.textColor = .white
         return label
+    }()
+    
+    private lazy var doctorsCollectionV: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let collectionV = UICollectionView(frame: .null, collectionViewLayout: layout)
+        collectionV.register(DoctorCollectionCell.self, forCellWithReuseIdentifier: DoctorCollectionCell.identifier)
+        collectionV.backgroundColor = .red
+        collectionV.delegate = self
+        collectionV.dataSource = self
+        collectionV.showsHorizontalScrollIndicator = false
+        return collectionV
     }()
     
     override func viewDidLoad() {
@@ -31,21 +43,49 @@ class HomeViewController: UIViewController {
     }
 
     private func setupConstraints(){
-        view.backgroundColor = .green
+        view.backgroundColor = Color.customDarkBlue
+        
         view.addSubview(usernameTitle)
         usernameTitle.snp.makeConstraints { make in
-            make.centerX.centerY.equalToSuperview()
+            make.trailing.equalTo(-30)
+            make.top.equalTo(100)
         }
+        
+        view.addSubview(doctorsCollectionV)
+        doctorsCollectionV.snp.makeConstraints { make in
+            make.trailing.equalToSuperview()
+            make.leading.equalTo(15)
+            make.top.equalTo(usernameTitle.snp.bottom).offset(70)
+            make.height.equalTo(260)
+        }
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DoctorCollectionCell.identifier, for: indexPath) as? DoctorCollectionCell else { return DoctorCollectionCell()}
+        
+        cell.layer.cornerRadius = 14
+        cell.layer.masksToBounds = true
+        cell.backgroundColor = .green
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: self.doctorsCollectionV.frame.width / 1.5, height: self.doctorsCollectionV.frame.height / 1.1)
     }
 }
 
 
 extension HomeViewController: HomeVCDelegate{
     func getUsername(username: String){
-        print("1USERNAME !")
-        print(username)
-        print("2USERNAME !")
-        self.loadViewIfNeeded()
-        self.usernameTitle.text = username
+        DispatchQueue.main.async {
+            self.usernameTitle.text = username
+        }
     }
 }
+
