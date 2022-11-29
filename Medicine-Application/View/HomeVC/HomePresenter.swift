@@ -23,15 +23,14 @@ class HomePresenter: HomePresenterDelegate{
     
     
     func viewDidLoad(){
-        let userID : String = (Auth.auth().currentUser?.email)!
-        print("Current user ID is" + userID)
-        view?.getUsername(username: userID)
+        let userEmail : String = (Auth.auth().currentUser?.email)!
+        DispatchQueue.main.async {
+            self.view?.getUsername(username: userEmail)
+        }
     }
     
     func getUsername(username: String, isNurse: Bool, isDoctor: Bool){
-        let userID : String = (Auth.auth().currentUser?.email)!
-        print("Current user ID is" + userID)
-        view?.getUsername(username: userID)
+
     }
     
     
