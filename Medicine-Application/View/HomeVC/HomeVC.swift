@@ -29,7 +29,7 @@ class HomeViewController: UIViewController {
         layout.scrollDirection = .horizontal
         let collectionV = UICollectionView(frame: .null, collectionViewLayout: layout)
         collectionV.register(DoctorCollectionCell.self, forCellWithReuseIdentifier: DoctorCollectionCell.identifier)
-        collectionV.backgroundColor = .red
+        collectionV.backgroundColor = Color.customDarkBlue
         collectionV.delegate = self
         collectionV.dataSource = self
         collectionV.showsHorizontalScrollIndicator = false
@@ -55,7 +55,7 @@ class HomeViewController: UIViewController {
         doctorsCollectionV.snp.makeConstraints { make in
             make.trailing.equalToSuperview()
             make.leading.equalTo(15)
-            make.top.equalTo(usernameTitle.snp.bottom).offset(70)
+            make.top.equalTo(usernameTitle.snp.bottom).offset(90)
             make.height.equalTo(260)
         }
     }
@@ -68,15 +68,11 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DoctorCollectionCell.identifier, for: indexPath) as? DoctorCollectionCell else { return DoctorCollectionCell()}
-        
-        cell.layer.cornerRadius = 14
-        cell.layer.masksToBounds = true
-        cell.backgroundColor = .green
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.doctorsCollectionV.frame.width / 1.5, height: self.doctorsCollectionV.frame.height / 1.1)
+        return CGSize(width: self.doctorsCollectionV.frame.width / 2, height: self.doctorsCollectionV.frame.height / 1.5)
     }
 }
 
