@@ -45,8 +45,7 @@ class RegisterPresenter: RegisterPresenterDelegate{
         FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { result, error in
             guard error == nil else {
                 print("Failed while Creating Account.")
-                print(error?.localizedDescription)
-                self.view?.check(isCreated: false)
+                self.view?.check(isCreated: false, message: error?.localizedDescription)
                 return
             }
             
@@ -60,9 +59,9 @@ class RegisterPresenter: RegisterPresenterDelegate{
                                                             "uid": result!.user.uid]) { (error) in
                 if error != nil{
                     print(error?.localizedDescription)
-                    self.view?.check(isCreated: false)
+                    self.view?.check(isCreated: false, message: error?.localizedDescription)
                 }else{
-                    self.view?.check(isCreated: true)
+                    self.view?.check(isCreated: true, message: "Success!")
                 }
             }
         }

@@ -10,7 +10,7 @@ import SnapKit
 
 protocol RegisterVCDelegate: AnyObject {
     
-    func check(isCreated: Bool)
+    func check(isCreated: Bool, message: String?)
     
 }
 
@@ -46,7 +46,7 @@ class RegisterViewController: UIViewController {
     
     private lazy var loginField: UITextField = {
         let textF = TextField()
-        textF.placeholder = "username"
+        textF.placeholder = "Email"
         textF.layer.borderWidth = 1
         textF.layer.cornerRadius = 14
         textF.layer.masksToBounds = true
@@ -203,14 +203,14 @@ class RegisterViewController: UIViewController {
 
 extension RegisterViewController: RegisterVCDelegate{
 
-    func check(isCreated: Bool){
+    func check(isCreated: Bool, message: String?){
         if isCreated{
             let vc = HomeBuilder.build()
             vc.hero.isEnabled = true
             vc.hero.modalAnimationType = .pageIn(direction: .down)
             self.present(vc, animated: true)
         }else{
-            greetingText.text = "Username is busy"
+            greetingText.text = message
         }
     }
     

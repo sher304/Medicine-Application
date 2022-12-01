@@ -72,7 +72,7 @@ class LoginViewController: UIViewController {
     
     private lazy var enterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Email", for: .normal)
         button.backgroundColor = Color.customGreen
         button.layer.cornerRadius = 14
         button.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)

@@ -56,10 +56,7 @@ class DoctorCollectionCell: UICollectionViewCell{
       }
     
     
-    private func setConstraints(){
-        
-        contentView.backgroundColor = .red
-        
+    private func setConstraints(){        
         contentView.addSubview(parentView)
         parentView.snp.makeConstraints { make in
             make.trailing.bottom.top.equalToSuperview()
